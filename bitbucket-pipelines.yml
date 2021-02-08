@@ -1,0 +1,18 @@
+image: node:8.11.3
+
+pipelines:
+  branches:
+    production:
+      - step:
+          name: Production deployment
+          deployment: production
+          script:
+            - echo "Running production deploy..."
+            - ssh ubuntu@18.228.94.98 "sh deploy.sh"
+    staging:
+      - step:
+          name: Staging deployment
+          deployment: staging
+          script:
+            - echo "Running staging deploy..."
+            - ssh ederson@191.252.195.165 "sh deploy.sh"
